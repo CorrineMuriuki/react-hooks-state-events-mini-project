@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CategoryFilter from "./CategoryFilter";
 import NewTaskForm from "./NewTaskForm";
 import TaskList from "./TaskList";
@@ -8,6 +8,11 @@ console.log("Here's the data you're working with");
 console.log({ CATEGORIES, TASKS });
 
 function App() {
+  useEffect(() => {
+    fetch("http://localhost:3000/tasks")
+    .then(resp => resp.json())
+    .then((p)=> console.log (p))
+  }, [])
   return (
     <div className="App">
       <h2>My tasks</h2>
